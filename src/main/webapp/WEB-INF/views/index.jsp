@@ -1,23 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
- <jsp:include page="Common/Header.jsp"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:include page="Common/Header.jsp"/>
 <%-- split header right here --%>
-    <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                Zacznij pomagać!<br/>
-                Oddaj niechciane rzeczy w zaufane ręce
-            </h1>
-        </div>
+<div class="slogan container container--90">
+    <div class="slogan--item">
+        <h1>
+            Zacznij pomagać!<br/>
+            Oddaj niechciane rzeczy w zaufane ręce
+        </h1>
     </div>
+</div>
 </header>
 
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${donQuantity}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -25,7 +25,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${allDonations}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -83,18 +83,22 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
+            <c:forEach var="i" begin="0" end="3" step="2">
 
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
+                <li>
+                    <div class="col">
+                        <div class="title">${instit[i].name}</div>
+                        <div class="subtitle">Cel i misja: ${instit[i].description}</div>
+                    </div>
 
+                    <div class="col">
+                        <div class="title">${instit[i + 1].name}</div>
+                        <div class="subtitle">Cel i misja: ${instit[i + 1].description}</div>
+                    </div>
+                </li>
+
+            </c:forEach>
+<%--            do usuniecia --%>
             <li>
                 <div class="col">
                     <div class="title">Fundacja “Dla dzieci"</div>

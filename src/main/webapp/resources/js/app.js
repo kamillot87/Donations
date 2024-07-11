@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+  var categories = document.getElementById("cat");
+  console.log(categories)
+  var worki = document.getElementById("worki")
+  console.log(worki)
   /**
    * Form Select
    */
@@ -171,4 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+
+
 });

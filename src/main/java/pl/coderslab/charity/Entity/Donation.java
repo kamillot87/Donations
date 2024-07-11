@@ -3,13 +3,12 @@ package pl.coderslab.charity.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,14 +17,14 @@ import java.time.LocalTime;
 public class Donation {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
     //liczba worków
     private Integer quantity;
 
-    @ManyToOne
-    private Category category;
+    @ManyToMany
+    private List<Category> category;
 
     @ManyToOne
     private Institution institution;
@@ -33,9 +32,27 @@ public class Donation {
     private String street;
     private String city;
     private String zipCode;
+    private String phone;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
+
     private LocalTime pickUpTime;
     private String pickUpComment;
 
-
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", category=" + category +
+                ", institution=" + institution +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", pickUpDate=" + pickUpDate +
+                ", pickUpTime=" + pickUpTime +
+                ", pickUpComment='" + pickUpComment + '\'' +
+                '}';
+    }
 }
