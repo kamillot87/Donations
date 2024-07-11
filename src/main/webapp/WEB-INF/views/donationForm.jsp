@@ -90,7 +90,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <span id="worki"><form:input   path="quantity"/></span>
+                        <form:input  id="worki" path="quantity"/>
                     </label>
                 </div>
 
@@ -104,11 +104,10 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-<%--                <span class="checkbox radio"><form:select  itemLabel="name" itemValue="id" path="institution" items="${institutions}"/></span>--%>
                                     <c:forEach items="${institutions}" var="i">
                                         <div class="form-group form-group--checkbox">
                                             <label>
-                                                <input type="radio" name="institution" value="${i.id}"/>
+                                                <input id="insti" type="radio" name="instit" value="${i.name}"/>
                                                 <span class="checkbox radio"></span>
                                                 <span class="description">
                                       <div class="title">${i.name}</div>
@@ -133,22 +132,22 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input path="street"/> </label>
+                            <label> Ulica <form:input id="street" class="adres1" path="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input type="text" path="city"/> </label>
+                            <label> Miasto <form:input id="city" class="adres1" type="text" path="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input type="text" path="zipCode"/>
+                                Kod pocztowy <form:input id="zip" class="adres1" type="text" path="zipCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <form:input type="tel" path="phone"/>
+                                Numer telefonu <form:input id="tel" class="adres1" type="tel" path="phone"/>
                             </label>
                         </div>
                     </div>
@@ -156,24 +155,24 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" path="pickUpDate"/> </label>
+                            <label> Data <form:input class="date1" type="date" path="pickUpDate"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" path="pickUpTime"/> </label>
+                            <label> Godzina <form:input class="date1"  type="time" path="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea path="pickUpComment" rows="5"/>
+                                <form:textarea class="date1"  path="pickUpComment" rows="5" placeholder="brak uwag" />
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" id="but2" class="btn next-step">Dalej</button>
                 </div>
             </div>
 
@@ -204,7 +203,7 @@
                     <div class="form-section form-section--columns">
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
-                            <ul>
+                            <ul class="adres2">
                                 <li>Prosta 51</li>
                                 <li>Warszawa</li>
                                 <li>99-098</li>
@@ -214,7 +213,7 @@
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
-                            <ul>
+                            <ul class="date2">
                                 <li>13/12/2018</li>
                                 <li>15:40</li>
                                 <li>Brak uwag</li>
@@ -230,7 +229,6 @@
             </div>
         </form:form>
 
-        <%--        </form>--%>
     </div>
 </section>
 

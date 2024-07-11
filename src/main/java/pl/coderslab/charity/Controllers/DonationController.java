@@ -34,10 +34,10 @@ public class DonationController {
 
     @PostMapping ("/form")
     @ResponseBody
-    public String saveDonation(@ModelAttribute("donation") Donation donation, @RequestParam List<String> categories, @RequestParam Integer institution) {
+    public String saveDonation(@ModelAttribute("donation") Donation donation, @RequestParam List<String> categories, @RequestParam String instit) {
         donation.setCategory(categories.stream().map(a -> categoryDao.findByName(a)).map(category -> category).toList());
-        donation.setInstitution(institutionDao.findById(institution).get());
-//        donationDao.save(donation);
+        donation.setInstitution(institutionDao.findByName(instit));
+        donationDao.save(donation);
         return donation.toString();
     }
 

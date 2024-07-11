@@ -26,7 +26,7 @@ public class Donation {
     @ManyToMany
     private List<Category> category;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private Institution institution;
 
     private String street;
