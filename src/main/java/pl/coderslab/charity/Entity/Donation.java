@@ -29,6 +29,9 @@ public class Donation {
     @ManyToOne (cascade = CascadeType.ALL)
     private Institution institution;
 
+    @ManyToOne (cascade = CascadeType.ALL)
+    private User user;
+
     private String street;
     private String city;
     private String zipCode;

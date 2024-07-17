@@ -7,15 +7,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.DAO.UserDao;
+import pl.coderslab.charity.DTO.UserRegistrationDto;
 import pl.coderslab.charity.Entity.User;
+import pl.coderslab.charity.Service.UserClassImpl;
 
 @Controller
 @AllArgsConstructor
 public class RegistrationController {
 
     private UserDao userDao;
+    private UserClassImpl userClass;
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -24,10 +26,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(Model model, @ModelAttribute("user") User user) {
-        user.setRole("USER");
-        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-        userDao.save(user);
+    public String register(Model model, @ModelAttribute("user") UserRegistrationDto user) {
+//        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        userClass.save(user);
         return "redirect:/login";
     }
 }

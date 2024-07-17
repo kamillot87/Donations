@@ -1,19 +1,21 @@
 package pl.coderslab.charity.Entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Table (name = "user")
 public class User {
 
     @Id
@@ -21,9 +23,16 @@ public class User {
     private Integer id;
     private String name;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
-    private String role;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Role> roles = new ArrayList<>();
+
+    @OneToMany (mappedBy = "user")
+    private List<Donation> donations = new ArrayList<>();
+
 
     @Override
     public String toString() {

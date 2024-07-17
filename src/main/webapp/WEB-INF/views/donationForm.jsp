@@ -227,6 +227,7 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
+            <input type="hidden" name="email" value="${pageContext.request.userPrincipal.name}">
         </form:form>
 
     </div>
